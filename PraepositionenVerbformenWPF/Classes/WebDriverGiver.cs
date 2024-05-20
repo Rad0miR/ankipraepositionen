@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.DevTools.V122.Browser;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
@@ -14,31 +15,40 @@ namespace PraepositionenVerbformenWPF.Classes
         const string s_driverPath = @"C:\Users\persh\source\repos\PraepositionenVerbformenWPF\PraepositionenVerbformenWPF\bin\Debug\net6.0-windows\chromedriver.exe";
         private static IWebDriver _driver = null;
 
-        private static IWebDriver NewChromeDriver() => new ChromeDriver(s_driverPath);
-
-        public static IWebDriver GetDriver()
+        public static IWebDriver Driver
         {
-            if (_driver is null)
+            get
             {
-                _driver = NewChromeDriver();
+                if (_driver is null)
+                {
+                    _driver = new ChromeDriver(s_driverPath);
 
-                _driver.Navigate().GoToUrl("https://www.verbformen.de");
+                    _driver.Navigate().GoToUrl("https://www.verbformen.de");
 
-                WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
+                    WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
 
-                wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.Id("sp_message_iframe_890776")));
+                    wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.Id("sp_message_iframe_890776")));
 
-                _driver.SwitchTo().Frame(_driver.FindElement(By.Id("sp_message_iframe_890776")));
+                    _driver.SwitchTo().Frame(_driver.FindElement(By.Id("sp_message_iframe_890776")));
 
-                IWebElement button = _driver.FindElement(By.XPath("//button[@title='Zustimmen']"));
+                    IWebElement button = _driver.FindElement(By.XPath("//button[@title='Zustimmen']"));
 
-                button.Click();
+                    button.Click();
 
-                System.Threading.Thread.Sleep(2000);
+                    System.Threading.Thread.Sleep(2000);
 
-                _driver.SwitchTo().DefaultContent();
+                    _driver.SwitchTo().DefaultContent();
+                }
+                return _driver;
             }
-            return _driver;
+        }
+
+        public static void CloseBrowser() 
+        {
+            if (_driver is not null) 
+            {
+                _driver.Quit();
+            }
         }
     }
 }

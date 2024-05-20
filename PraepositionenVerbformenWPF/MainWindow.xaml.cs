@@ -31,7 +31,7 @@ namespace PraepositionenVerbformenWPF
 
         private void btnLoad_Click(object sender, RoutedEventArgs e)
         {
-            IWebDriver driver = WebDriverGiver.GetDriver();
+            IWebDriver driver = WebDriverGiver.Driver;
 
             try
             {
@@ -53,10 +53,9 @@ namespace PraepositionenVerbformenWPF
 
         private void btnPopulate_Click(object sender, RoutedEventArgs e)
         {
-            IWebDriver driver = WebDriverGiver.GetDriver();
+            IWebDriver driver = WebDriverGiver.Driver;
 
             string en = driver.FindElements(By.CssSelector("dd[lang='en']")).Single().Text;
-
             string uk = driver.FindElements(By.CssSelector("dd[lang='uk']")).Single().Text;
             string ru = driver.FindElements(By.CssSelector("dd[lang='ru']")).Single().Text;
 
