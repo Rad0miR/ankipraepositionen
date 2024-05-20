@@ -88,12 +88,21 @@ namespace PraepositionenVerbformenWPF
                 // Wait for the search results page to load (you might need to adjust the time based on your internet speed)
                 System.Threading.Thread.Sleep(2000);
 
-                // Print the title of the search results page
-                Console.WriteLine("Page title: " + driver.Title);
+                
+                var temp = driver.FindElement(By.ClassName("rAufZu"));
 
-                string en = driver.FindElement(By.XPath("//*[@id=\"xa19dc\"]/dl[3]/dd[1]/span[2]")).Text;
-                string uk = driver.FindElement(By.XPath("//*[@id=\"xa19dc\"]/dl[3]/dd[9]/span[2]")).Text;
-                string ru = driver.FindElement(By.XPath("//*[@id=\"xa19dc\"]/dl[3]/dd[1]/span[2]")).Text;
+
+                ////*[@id="xb3ae8"]/dl[2]/dd/span[2]
+                ///#xb3ae8 > dl:nth-child(4) > dd > span:nth-child(2)
+                ///document.querySelector("#xb3ae8 > dl:nth-child(4) > dd > span:nth-child(2)")
+                ////html/body/article/div[1]/div[5]/section[2]/div[2]/dl[2]/dd/span[2]
+                ////html/body/article/div[1]/div[5]/section[2]/div[2]/dl[3]/dd[1]/span[2]
+
+
+                string en = driver.FindElements(By.CssSelector("dd[lang='en']")).Single().Text;
+
+                string uk = driver.FindElements(By.CssSelector("dd[lang='uk']")).Single().Text;
+                string ru = driver.FindElements(By.CssSelector("dd[lang='ru']")).Single().Text;
 
                 rtb2.Document.Blocks.Clear();
                 rtb2.Document.Blocks.Add(new Paragraph(new Run($"{en}\n{uk}\n{ru}")));
