@@ -13,7 +13,6 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0" Margin="5">
@@ -21,10 +20,12 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <TextBox x:Name="tbInput" Grid.Column="0" Margin="5" VerticalAlignment="Center" Text="abhängen"/>
             <Button x:Name="btnLoad" Grid.Column="1" Margin="10" Content="Load" VerticalAlignment="Center" Click="btnLoad_Click"/>
             <Button x:Name="btnPopulate" Grid.Column="2" Margin="10" Content="Populate" VerticalAlignment="Center" Click="btnPopulate_Click"/>
+            <Button x:Name="btnSave" Grid.Column="3" Margin="10" Content="Save" VerticalAlignment="Center" Click="btnSave_Click"/>
         </Grid>
 
         <RichTextBox x:Name="rtb1" Grid.Row="1" Margin="5" VerticalAlignment="Stretch"/>
@@ -34,7 +35,5 @@
         <RichTextBox x:Name="rtb3" Grid.Row="3" Margin="5" VerticalAlignment="Stretch"/>
         <!-- Fifth row with TextBox -->
         <RichTextBox x:Name="rtb4" Grid.Row="4" Margin="5" VerticalAlignment="Stretch"/>
-        <!-- Sixth row with TextBox -->
-        <RichTextBox x:Name="rtb5" Grid.Row="5" Margin="5" VerticalAlignment="Stretch"/>
     </Grid>
 </Window>

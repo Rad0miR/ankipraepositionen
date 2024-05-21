@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.DevTools.V122.Browser;
+//using OpenQA.Selenium.DevTools.V122.Browser;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ namespace PraepositionenVerbformenWPF.Classes
     internal static class WebDriverGiver
     {
         const string s_driverPath = @"C:\Users\persh\source\repos\PraepositionenVerbformenWPF\PraepositionenVerbformenWPF\bin\Debug\net6.0-windows\chromedriver.exe";
-        private static IWebDriver _driver = null;
+        private static IWebDriver _driver = null!;
 
         public static IWebDriver Driver
         {

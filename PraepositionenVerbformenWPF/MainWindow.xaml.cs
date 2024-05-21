@@ -62,5 +62,10 @@ namespace PraepositionenVerbformenWPF
             rtb2.Document.Blocks.Clear();
             rtb2.Document.Blocks.Add(new Paragraph(new Run($"{en}\n{uk}\n{ru}")));
         }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
